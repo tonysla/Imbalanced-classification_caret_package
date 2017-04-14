@@ -57,6 +57,7 @@ model_one <- train(x = train_x[, -9],
 model_one
 summary(model_one)
 
+# plot of the model_one
 plot(model_one, transform.x = log10, 
      xlab = expression(log[10](gamma)), 
      ylab = "cost")
@@ -82,6 +83,7 @@ model_two <- train(x = train_x[, -9],
 # check model
 model_two
 summary(model_two)
+
 plot(model_two, transform.x = log10, 
      xlab = expression(log[10](gamma)), 
      ylab = "cost")
@@ -92,6 +94,8 @@ valid_set <- data_over[indices == 2,]
 valid_set$pred_2nd <- predict(model_two, newdata = valid_set[,-9], type = 'raw')
 confusionMatrix(valid_set$outcome, valid_set$pred_2nd)
 
+# run valid set again, if not will show an error
+valid_set <- data_over[indices == 2,]
 # plot roc for SVM model_two
 p2 <- predict(model_two, newdata = valid_set[-9], type = 'prob')[,2]
 plot.roc(valid_set$outcome, p2, percent=TRUE, print.auc=TRUE)
