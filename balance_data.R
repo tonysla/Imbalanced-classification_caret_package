@@ -7,23 +7,13 @@ library(gbm)
 library(pROC)
 library(ROSE)
 
-# Testing SVM models & trying to predict with diabetes data 
-# taken from kaggle.com. There are three SVM models below 
-# using 'kernlab', 'pROC' & 'e1071' package via 'caret' package. 
-# All three models use same trainControl 
-
-# read the data
+# read the data taken from kaggle.com 
 diabetes <- read.csv('diabetes.csv')
 # set variable headers all to lower case letters
 names(diabetes) <- tolower(names(diabetes))
 # check the data
 head(diabetes)
 str(diabetes)
-
-# check for corroletaion among variables
-cor(diabetes)
-# also plot a matrix of variables
-plot(diabetes, pair = T)
 
 # turn variavle 'outcome' as a dependet/respond variable 
 # to factor & set '0' & '1' into 'No' & 'Yes'
