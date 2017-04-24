@@ -3,9 +3,13 @@ library(caret)
 library(C50)
 library(pROC)
 library(ROSE)
+library(plyr)
+
+# clear environment
+rm(list=ls())
 
 # read the data
-diabetes <- read.csv('../input/diabetes.csv', header = TRUE)
+diabetes <- read.csv('diabetes.csv', header = TRUE)
 # set all variable headers to lower case letters
 names(diabetes) <- tolower(names(diabetes))
 
@@ -26,12 +30,12 @@ indices <- sample(2, nrow(diabetes), replace = TRUE,
 train_x <- diabetes[indices == 1,]
 test_y <- diabetes[indices == 2,]
 
-cvCont <- trainControl(method = "repeatedcv", number = 5,
+tCont <- trainControl(method = "repeatedcv", number = 5,
                        summaryFunction = twoClassSummary, 
                        classProbs = TRUE)
 
 grid <- expand.grid(model = "tree",
-                    trials = 1:10,
+                    trials = 1:4,
                     winnow = FALSE)
 
 # set seed for reproducibility
@@ -41,11 +45,11 @@ set.seed(1)
 c50_model <- train(x = train_x[, -9],
                    y = train_x[, 9],
                    method = "C5.0",
-                   tuneLength = 3,
+                   tuneLength = 5,
                    preProc = c("center", "scale"),
                    tuneGrid = grid,
                    metric = "ROC",
-                   trControl = cvCont)
+                   trControl = tCont)
 
 # check model
 c50_model
@@ -86,19 +90,6 @@ plot(varImpact, 8, main = "Variable impact")
 # Balanced version
 # Balancing the data using ROSE package. 
 
-# read the data
-diabetes <- read.csv('../input/diabetes.csv', header = TRUE)
-# set all variable headers to lower case letters
-names(diabetes) <- tolower(names(diabetes))
-
-# check the data
-head(diabetes)
-str(diabetes)
-
-# turn variavle 'outcome' as a dependet/respond variable 
-# to factor & set '0' & '1' into 'No' & 'Yes'
-diabetes$outcome <- factor(ifelse(diabetes$outcome == 0, 'No', 'Yes'))
-
 # Now we get almost equal number of 'No' & 'Yes'
 # over sampling using 'ROSE'
 df_balanced <- ovun.sample(outcome ~ ., data = diabetes, method = "over", 
@@ -119,7 +110,7 @@ cvCont <- trainControl(method = "repeatedcv", number = 5,
                        classProbs = TRUE)
 
 grid <- expand.grid(model = "tree",
-                    trials = 1:10,
+                    trials = 1:4,
                     winnow = FALSE)
 
 # set seed for reproducibility
@@ -129,7 +120,7 @@ set.seed(1)
 c50_2nd <- train(x = train[, -9],
                  y = train[, 9],
                  method = "C5.0",
-                 tuneLength = 3,
+                 tuneLength = 5,
                  preProc = c("center", "scale"),
                  tuneGrid = grid,
                  metric = "ROC",
@@ -170,4 +161,3 @@ varImpact <- varImp(c50_2nd, scale = FALSE)
 varImpact
 # plot top 20 most important variables
 plot(varImpact, 8, main = "Variable impact")
-
