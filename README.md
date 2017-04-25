@@ -22,3 +22,6 @@ I am using the same tunning parameters for both methods to have the ability to c
 
 I am jumping into the results and not going through the steps of training the models. 
 
+Below is the ROC chart for the imbalanced version
+
+![imbalanced](https://cloud.githubusercontent.com/assets/22155935/25368216/e53b08ae-2948-11e7-9de7-9c2b878bda94.png)
