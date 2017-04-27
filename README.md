@@ -58,4 +58,4 @@ ROC chart for the balanced version
 
 ![balanced](https://cloud.githubusercontent.com/assets/22155935/25467669/e85e8178-2add-11e7-981d-33143d87bb6d.png)
 
-
+There is an increase of 10% in the balanced ROC chart compare to the imbalanced ROC chart. 
