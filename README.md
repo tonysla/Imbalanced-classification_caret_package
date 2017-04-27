@@ -29,7 +29,7 @@ Confusion matrix for imbalanced version
            No  90  15
            Yes 19  33
      
- Sensitivity & specificity for the imbalanced version
+ Accuracy, sensitivity & specificity for the imbalanced version
         
         Accuracy : 0.7834
         Sensitivity : 0.8257          
@@ -42,7 +42,7 @@ Confusion matrix for balanced version
             No  84  21
             Yes 13  80
 
-Sensitivity & specificity for the balanced version
+Accuracy, sensitivity & specificity for the balanced version
 
         Accuracy : 0.8283
         Sensitivity : 0.8660          
@@ -56,4 +56,6 @@ Comparing ROC chart for the imbalanced & balanced version
 
 ROC chart for the balanced version
 
-![balanced](https://cloud.githubusercontent.com/assets/22155935/25466743/6776974e-2ad8-11e7-8b8a-2c800a043828.png)
+![balanced](https://cloud.githubusercontent.com/assets/22155935/25467669/e85e8178-2add-11e7-981d-33143d87bb6d.png)
+
+
