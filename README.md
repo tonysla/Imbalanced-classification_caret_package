@@ -28,7 +28,13 @@ Confusion matrix for imbalanced version
     Prediction No Yes
            No  90  15
            Yes 19  33
-           
+     
+ Sensitivity & specificity for the imbalanced version
+        
+        Accuracy : 0.7834
+        Sensitivity : 0.8257          
+        Specificity : 0.6875 
+
 Confusion matrix for balanced version
 
               Reference
@@ -36,7 +42,14 @@ Confusion matrix for balanced version
             No  84  21
             Yes 13  80
 
-There are less false negative predicted in the balanced version, eventhough the test set is larger than in the imbalanced version. 
+Sensitivity & specificity for the balanced version
+
+        Accuracy : 0.8283
+        Sensitivity : 0.8660          
+        Specificity : 0.7921 
+
+There are less false negative predicted in the balanced version, eventhough the test set is larger than in the imbalanced version. That is why the sensitivity scores higher in the balanced version. Achiving a high score in sensitivity is more important than scoring a high result in total accuracy.
+
 Comparing ROC chart for the imbalanced & balanced version
 
 ![imbalanced](https://cloud.githubusercontent.com/assets/22155935/25368216/e53b08ae-2948-11e7-9de7-9c2b878bda94.png)
