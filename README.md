@@ -25,3 +25,7 @@ I am jumping into the results and not going through the steps of training the mo
 Below is the ROC chart for the imbalanced version
 
 ![imbalanced](https://cloud.githubusercontent.com/assets/22155935/25368216/e53b08ae-2948-11e7-9de7-9c2b878bda94.png)
+
+ROC chart for the balanced version
+
+![balanced](https://cloud.githubusercontent.com/assets/22155935/25466743/6776974e-2ad8-11e7-8b8a-2c800a043828.png)
